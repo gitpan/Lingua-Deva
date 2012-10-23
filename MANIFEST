@@ -1,0 +1,14 @@
+Build.PL
+Changes
+lib/Lingua/Deva.pm
+lib/Lingua/Deva/Aksara.pm
+lib/Lingua/Deva/Maps.pm
+MANIFEST			This list of files
+META.json
+META.yml
+README
+t/Aksara.t
+t/aksarize.t
+t/data.t
+t/Deva.t
+t/translate.t
