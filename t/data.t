@@ -12,7 +12,7 @@ my $d = Lingua::Deva->new();
 # Random Sanskrit words with a few invalid characters
 my @lines = split /\n/, <<'EOF';
 sabhā saṃnikṛṣṭau kumārāḥ tu Ca rājñas kṛṣṇena Paśyema te ubhau |
-sarve Rūpeṇa dīrghavairī etaz avṛttir adhaḥ śūro jñātibhedam kḷptaḥ |
+sarve Rūpeṇa dīrghavairī etaz avṛttir adhaḥ śūro 'kḷptaḥ jñātibhedam |
 tṛṇāni bhūmir dṛṣṭvā na brāhmaṇaṃ manyante satāṃ tasyāvṛttibhayaṃ mā
 raudreṇa tathā duṣputraiḥ brūyā uvāca Ṛṣīṇām dharmam gṛhṇīte |
 Iva bālyāt sarvataḥ Dāne apradhṛṣyaṃ qaf siṃhagrīvo tadā yāhi
@@ -20,14 +20,13 @@ EOF
 
 my @dlines = split /\n/, <<'EOF';
 सभा संनिकृष्टौ कुमाराः तु च राज्ञस् कृष्णेन पश्येम ते उभौ |
-सर्वे रूपेण दीर्घवैरी एतz अवृत्तिर् अधः शूरो ज्ञातिभेदम् कॢप्तः |
+सर्वे रूपेण दीर्घवैरी एतz अवृत्तिर् अधः शूरो ऽकॢप्तः ज्ञातिभेदम् |
 तृणानि भूमिर् दृष्ट्वा न ब्राह्मणं मन्यन्ते सतां तस्यावृत्तिभयं मा
 रौद्रेण तथा दुष्पुत्रैः ब्रूया उवाच ऋषीणाम् धर्मम् गृह्णीते |
 इव बाल्यात् सर्वतः दाने अप्रधृष्यं qअf सिंहग्रीवो तदा याहि
 EOF
 
-# Tests with a larger dataset
-
+# Use a larger dataset
 my (@large, @dlarge);
 push @large, @lines for (1..1000);
 push @dlarge, @dlines for (1..1000);
@@ -57,7 +56,7 @@ my @aksaras;
 $start = times();
 for (@large) { push @aksaras, @{ $d->l_to_aksaras($_) } }
 $end = times();
-ok( 1, 'create array of ' . @aksaras . ' aksaras ' . secs($start, $end) ); 
+ok( 1, 'create array of ' . @aksaras . ' aksaras ' . secs($start, $end) );
 
 $start = times();
 my @real_aksaras = grep { ref($_) eq 'Lingua::Deva::Aksara' } @aksaras;
